@@ -3,21 +3,20 @@ import {
   GlobalStyleComponent,
   DefaultTheme
 } from "styled-components";
-import Font from "assets/font/NotoSansCJKkr.ttf";
+
+export const COLOR = {
+  gray: "#eceff1" as const,
+  hard_gray: "rgb(53, 59, 72)" as const
+};
 
 const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
   /* css initialize */
+  @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
   html, body {
     width: 100%;
-    min-width: 1024px;
-    font-family: ${Font};
+    font-family: 'Noto Sans KR', sans-serif;
   }
   input {
-    &:-webkit-autofill {
-      box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.8) inset;
-    }
-    border: solid 1px #ffa2c0;
-    border-radius: 5px;
     &[type=password] {
     font-family: sans-serif;
     }
@@ -25,6 +24,8 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
       outline: none;
     }
   }
+  
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -35,7 +36,7 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
   fieldset, form, label, legend,
   table, caption, tbody, tfoot, thead, tr, th, td,
   article, aside, canvas, details, embed,
-  figure, figcaption, footer, header, hgroup,
+   footer, header, hgroup,
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
     margin: 0;
@@ -50,6 +51,7 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
     list-style: none;
   }
   a {
+    color: #000;
     &:link{
       text-decoration: none;
     }
@@ -65,24 +67,20 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
     content: '';
     content: none;
   }
-  div {
-    &::-webkit-scrollbar {
-      width: 6px;
-      background: transparent;
-    }
-    &::-webkit-scrollbar-thumb {
-      width: 6px;
-      background: rgb(160, 160, 160);
-    }
-  }
-  .rotate{
-    transform: rotate(180deg);
-  }
-  
-  .btn{
-    display: inline-block;
-    transition: 0.5s;
-  }
+h1 {
+  font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+h3 {
+  display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
 `;
 
 export default GlobalStyle;

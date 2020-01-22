@@ -1,10 +1,19 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
+
+import * as S from "./style";
+import { ScrollToTop } from "components/common";
+import Login from "components/autorization/signin";
+import { useSignInRedux } from "container/signin";
 
 const Main: FC = () => {
+  const {
+    authReducerState: { accessToken }
+  } = useSignInRedux();
+
   return (
-    <div>
-      <div>이것이 폰트인가</div>
-    </div>
+    <ScrollToTop>
+      <S.Wrapper>{accessToken !== "" ?  <div/> : <Login />}</S.Wrapper>
+    </ScrollToTop>
   );
 };
 

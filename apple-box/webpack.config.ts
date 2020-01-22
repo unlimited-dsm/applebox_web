@@ -1,6 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const Dotenv = require("dotenv-webpack");
 const path = require("path");
 
 module.exports = {
@@ -43,12 +42,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        test: /\.(png|svg|jpg|jpeg|gif|mp4|mp3)$/,
         use: [
           {
             loader: "url-loader",
             options: {
-              limit: 500000,
+              limit: 50000000,
               name: "[name].[ext]?[hash]",
               publicPath: "/dist"
             }
@@ -86,7 +85,6 @@ module.exports = {
     }
   },
   plugins: [
-    new Dotenv(),
     new HtmlWebPackPlugin({
       favicon: "./public/favicon.ico",
       filename: "./index.html",
@@ -98,5 +96,8 @@ module.exports = {
       template: "[name].css"
     })
   ],
+  devServer: {
+    historyApiFallback: true
+  },
   devtool: "inline-source-map" // 코드의 오류를 상세하게함. ( 배포 후 'none' 으로 )
 };
